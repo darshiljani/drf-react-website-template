@@ -13,7 +13,7 @@
     "lint": "eslint . --ext ts,tsx,js,cjs --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write '**/*.{ts,tsx,js,cjs,html,htm,md,css,scss}'",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest --passWithNoTests --run"
   },
   "dependencies": {
     "@types/node": "^20.11.19",
