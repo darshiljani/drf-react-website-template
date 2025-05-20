@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DJANGO_SECRET_KEY = credentials('site_secret_key')
+        APP_ENV = "prod"
     }
 
     stages {
