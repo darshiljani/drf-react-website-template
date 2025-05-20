@@ -38,6 +38,19 @@ pipeline {
                 }
             }
         }
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    def nodeVersion = readFile file: 'frontend/.node-version'
+                    sh '''
+                        curl -fsSL https://deb.nodesource.com/setup_${nodeVersion}.x | bash -
+                        apt-get install -y nodejs
+                    '''
+                    sh 'node -v'
+                    sh 'npm -v'
+                }
+            }
+        }
         stage('Setup Frontend Environment') {
             steps {
                 dir('frontend') {
