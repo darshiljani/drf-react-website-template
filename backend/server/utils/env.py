@@ -1,6 +1,7 @@
 import os
 
+APP_ENV = os.getenv("APP_ENV", "dev")
+
 
 def load_settings():
-    env = os.getenv("APP_ENV", "dev")
-    return f"server.settings.{env}"
+    return f"server.settings.{APP_ENV}"

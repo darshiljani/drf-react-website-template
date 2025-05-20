@@ -12,7 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from datetime import timedelta
+from os import _exit
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+try:
+    load_dotenv()
+except Exception as e:
+    print(f"Error loading environment variables : {e}")
+    _exit(1)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
