@@ -9,6 +9,8 @@ SECRET_KEY = (
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+DEV_APPS = ["drf_yasg"]
+INSTALLED_APPS = INSTALLED_APPS + DEV_APPS  # NoQA: F405
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
