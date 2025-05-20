@@ -17,10 +17,10 @@ pipeline {
         }
         stage('Backend Linting & Formatting Check') {
             steps {
-                dir('backend/server') {
+                dir('backend') {
                     script {
-                        sh './venv/bin/ruff check . --fix --exclude "templates"'
-                        sh './venv/bin/ruff format . --diff --exclude "templates"'
+                        sh './venv/bin/ruff check ./server/ --fix --exclude "templates"'
+                        sh './venv/bin/ruff format ./server/ --diff --exclude "templates"'
                     }
                 }
             }
