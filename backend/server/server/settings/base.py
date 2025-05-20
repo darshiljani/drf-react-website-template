@@ -22,8 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(".secret_key", "r") as secret_file:
-    SECRET_KEY = secret_file.read().strip()
+SECRET_KEY_FILE = BASE_DIR / ".secret_key"
+if SECRET_KEY_FILE.exists():
+    with open(SECRET_KEY_FILE, "r") as secret_file:
+        SECRET_KEY = secret_file.read().strip()
+else:
+    raise RuntimeError("Secret key file missing!")
 
 APP_ENV = os.getenv("APP_ENV", "dev")
 
