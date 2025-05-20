@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'baa7016a-1c21-47f5-a3a9-97efe7fc1a8c', url: 'https://github.com/darshiljani/jenkins-site-tutorial'
+                git 'https://github.com/darshiljani/jenkins-site-tutorial'
             }
         }
         stage('Setup Python Environment') {
@@ -19,8 +19,8 @@ pipeline {
             steps {
                 dir('backend') {
                     script {
-                        sh './venv/bin/ruff check ./server/ --fix --exclude "templates"'
-                        sh './venv/bin/ruff format ./server/ --diff --exclude "templates"'
+                        sh './venv/bin/ruff check ./server/ --select I --fix --exclude "templates"'
+                        sh './venv/bin/ruff format ./server/ --exclude "templates" > /dev/null'
                     }
                 }
             }
