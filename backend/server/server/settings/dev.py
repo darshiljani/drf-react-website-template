@@ -1,13 +1,5 @@
 from .base import *  # NoQA : F403
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-86#b&^eempn+dwyzbj^@=vvi#p@yj7&vs4^u1ibet$!9^ch+#_"
-)
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ["*"]
 DEV_APPS = ["drf_yasg"]
 INSTALLED_APPS = INSTALLED_APPS + DEV_APPS  # NoQA: F405

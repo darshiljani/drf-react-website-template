@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DJANGO_SECRET_KEY = credentials('site_secret_key')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -12,6 +16,7 @@ pipeline {
                 dir('backend') {
                     sh 'python3 -m venv venv'
                     sh './venv/bin/pip install -r requirements/prod.txt'
+                    sh 'echo $DJANGO_SECRET_KEY > ./server/.secret_key'
                 }
             }
         }
