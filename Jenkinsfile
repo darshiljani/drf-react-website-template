@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools { nodejs "NodeJS" }
+    
     environment {
         DJANGO_SECRET_KEY = credentials('site_secret_key')
         APP_ENV = "prod"
