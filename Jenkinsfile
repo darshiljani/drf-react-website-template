@@ -55,7 +55,6 @@ pipeline {
             }
         }
     }
-    }
     post {
         success {
             echo 'All checks passed!'
