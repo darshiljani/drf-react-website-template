@@ -53,7 +53,7 @@ pipeline {
             steps {
                 dir('frontend') {
                     script {
-                        def typeCheckResult = sh(script: 'tsc --noEmit', returnStatus: true)
+                        def typeCheckResult = sh(script: './node_modules/.bin/tsc --noEmit', returnStatus: true)
                         if (typeCheckResult != 0) {
                             error('Frontend type checking failed! Cancelling commit.')
                         }
