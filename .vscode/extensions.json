@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "wayou.vscode-todo-highlight",
+    "charliermarsh.ruff",
+    "usernamehw.errorlens",
+    "thebarkman.vscode-djaneiro",
+    "ms-python.python",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "ritwickdey.liveserver",
+    "ms-vscode.js-debug-nightly"
+  ],
+  "unwantedRecommendations": ["ms-vscode.js-debug"]
+}
