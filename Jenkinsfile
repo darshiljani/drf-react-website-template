@@ -28,7 +28,7 @@ pipeline {
         stage('Backend Unit Tests') {
             steps {
                 dir('backend/server') {
-                    sh 'python manage.py test'
+                    sh 'python3 manage.py test'
                 }
             }
         }
