@@ -38,6 +38,13 @@ pipeline {
                 }
             }
         }
+        stage('Setup Frontend Environment') {
+            steps {
+                dir('frontend') {
+                    sh 'npm ci'
+                }
+            }
+        }
         stage('Frontend Type Checking') {
             steps {
                 dir('frontend') {
