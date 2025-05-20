@@ -11,13 +11,23 @@ pipeline {
             steps {
                 dir('backend') {
                     sh 'python3 -m venv venv'
-                    sh './venv/bin/pip install -r requirements.txt'
+                    sh './venv/bin/pip install -r requirements/prod.txt'
+                }
+            }
+        }
+        stage('Backend Linting & Formatting Check') {
+            steps {
+                dir('backend/server') {
+                    script {
+                        sh './venv/bin/ruff check . --fix --exclude "templates"'
+                        sh './venv/bin/ruff format . --diff --exclude "templates"'
+                    }
                 }
             }
         }
         stage('Backend Unit Tests') {
             steps {
-                dir('backend') {
+                dir('backend/server') {
                     sh 'python manage.py test'
                 }
             }
@@ -30,6 +40,17 @@ pipeline {
                         if (typeCheckResult != 0) {
                             error('Frontend type checking failed! Cancelling commit.')
                         }
+                    }
+                }
+            }
+        }
+        stage('Frontend Linting & Formatting Check') {
+            steps {
+                dir('frontend') {
+                    script {
+                        sh 'npm run lint'
+                        sh 'npm run format'
+                        echo 'Frontend linting & formatting completed!'
                     }
                 }
             }
